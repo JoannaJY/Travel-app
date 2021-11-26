@@ -34,7 +34,7 @@ const getPostCode = async(postcode) => {
 
     console.log(geonameslng);
     console.log(geonameslat)
-  getWeather(geonameslng, geonameslat, updataUI)
+  getWeather(geonameslng, geonameslat)
 }
 getPostCode();
 
@@ -44,7 +44,7 @@ getPostCode();
 
 // })
 
-const getWeather = async(lng, lat, callback) => {
+const getWeather = async(lng, lat) => {
 
     let weatherbitUrl = "https://api.weatherbit.io/v2.0/forecast/daily?";    
     let weatherbitLocation = `&lat=${lat}&lon=${lng}`;
@@ -62,14 +62,16 @@ const getWeather = async(lng, lat, callback) => {
 
         }
         console.log(weatherResults)
-        callback(weatherResults)
+        updateUI(weatherResults)
     }, (error) => {
         console.log(error);
     });
 
 }
-function updateUI () {
 
+function updateUI(req,res) {
+        res.send(data)
+        console.log(data)
 }
 
 
