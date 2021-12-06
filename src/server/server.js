@@ -17,7 +17,32 @@ app.listen(8080, function () {
 })
 
 
-const getPostCode = async(postcode, callback) => {
+// const getPostCode = async(postcode, callback) => {
+//     let geoLocation = {
+//         postalcode: postcode,
+//         maxRows: '10',
+//         username: 'zyy314jh'
+//     }
+
+//     const params = new url.URLSearchParams(geoLocation);
+//     let geonames_url = `http://api.geonames.org/postalCodeSearchJSON?${params}`
+
+//     let res = await axios.get(geonames_url);
+
+//     let = locationResults = {
+//           "geonamesLocation1": res.data.postalCodes[0].placeName,
+//           "geonamesLocation2": res.data.postalCodes[1].placeName,
+//           "geonamesLocation3": res.data.postalCodes[2].placeName,
+//     }
+
+//     console.log(locationResults);
+   
+//   getWeather(geonameslng, geonameslat)
+// }
+
+
+
+const getPostCode = async(postcode) => {
     let geoLocation = {
         postalcode: postcode,
         maxRows: '10',
@@ -29,68 +54,45 @@ const getPostCode = async(postcode, callback) => {
 
     let res = await axios.get(geonames_url);
 
-    let = locationResults = {
-          "geonamesLocation1": res.data.postalCodes[0].placeName,
-          "geonamesLocation2": res.data.postalCodes[1].placeName,
-          "geonamesLocation3": res.data.postalCodes[2].placeName,
-    }
+    let geonameslng = res.data.postalCodes[0].lng;
+    let geonameslat = res.data.postalCodes[0].lat;
 
-    console.log(locationResults);
-   
-//   getWeather(geonameslng, geonameslat)
+    console.log(geonameslng);
+    console.log(geonameslat)
+  getWeather(geonameslng, geonameslat, updateUIWeather)
 }
 
-app.get('/get-drop-down', function(req,res) {
-    let postCode = req.body;
-    getPostCode(postCode, function(data){
-        res.send(data);
+const getWeather = async(lng, lat, callback) => {
+
+    let weatherbitUrl = "https://api.weatherbit.io/v2.0/forecast/daily?";    
+    let weatherbitLocation = `&lat=${lat}&lon=${lng}`;
+    let weatherbitAPI = "&key=edcede910dab453eaac6a57b71c10fee";
+    
+    let weatherbit_url = weatherbitUrl + weatherbitLocation + weatherbitAPI;
+    console.log(weatherbit_url)
+
+    axios.get(weatherbit_url)
+    .then((response) => {
+        let weatherResults ={
+           "temperature": response.data.data[0].temp,
+           "wind": response.data.data[0].wind_spd,
+           "cloud": response.data.data[0].clouds,
+
+        }
+        console.log(weatherResults)
+        callback(weatherResults)
+    }, (error) => {
+        console.log(error);
     });
 
+}
+app.get('/getLocation', function(req,res) {let postCode = req.body;
+    getPostCode(postCode)
+    .then(function updateUIWeather(data){
+        console.log(data)
+        res.send(data);
+    }); 
 })
-// const getPostCode = async(postcode) => {
-//     let geoLocation = {
-//         postalcode: "5063",
-//         maxRows: '10',
-//         username: 'zyy314jh'
-//     }
-
-//     const params = new url.URLSearchParams(geoLocation);
-//     let geonames_url = `http://api.geonames.org/postalCodeSearchJSON?${params}`
-
-//     let res = await axios.get(geonames_url);
-
-//     let geonameslng = res.data.postalCodes[0].lng;
-//     let geonameslat = res.data.postalCodes[0].lat;
-
-//     console.log(geonameslng);
-//     console.log(geonameslat)
-//   getWeather(geonameslng, geonameslat)
-// }
-
-// const getWeather = async(lng, lat) => {
-
-//     let weatherbitUrl = "https://api.weatherbit.io/v2.0/forecast/daily?";    
-//     let weatherbitLocation = `&lat=${lat}&lon=${lng}`;
-//     let weatherbitAPI = "&key=edcede910dab453eaac6a57b71c10fee";
-    
-//     let weatherbit_url = weatherbitUrl + weatherbitLocation + weatherbitAPI;
-//     console.log(weatherbit_url)
-
-//     axios.get(weatherbit_url)
-//     .then((response) => {
-//         let weatherResults ={
-//            "temperature": response.data.data[0].temp,
-//            "wind": response.data.data[0].wind_spd,
-//            "cloud": response.data.data[0].clouds,
-
-//         }
-//         console.log(weatherResults)
-//         updateUI(weatherResults)
-//     }, (error) => {
-//         console.log(error);
-//     });
-
-// }
 
 
 

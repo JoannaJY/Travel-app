@@ -11,7 +11,7 @@
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
-  color: #333;
+  color: black;
   text-shadow: none; 
 }
 
@@ -78,6 +78,9 @@ body {
 }
 .px-3{
     margin-top: 300px;
+}
+.btn{
+  color: black ! important;
 }
 
 @media (max-width:1280px) {

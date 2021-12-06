@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    let destination = document.getElementById('destination');
-    destination.addEventListener('keyup', generateContent);
+    let button = document.getElementById('search');
+    button.addEventListener('click', generateContent);
 });
 
 
@@ -10,19 +10,19 @@ function generateContent(){
     let destinationtext = document.getElementById('destination').value;
 
     function checkContentLength(inputText) {
-          if(destinationtext.length <=4 ) {
+          if(destinationtext.length <=3 ) {
               alert("Please enter a vaild postcode.")
           }
       }
     checkContentLength(destinationtext)
     if ( destinationtext !=''){
-        getDropdown ('/get-drop-down', destinationtext, updateDropDown);
+        getLocation ('/getLocation', destinationtext, updateWeather);
     }else {
         return "Please enter your postcode!"
     }
 }
 
-const getDropdown = async (url, data, callback) => {
+const getLocation = async (url, data, callback) => {
     let base = 'http://localhost:8080'
     console.log(data);
     const response = await fetch(base + url, {
