@@ -1,3 +1,4 @@
+import axios from "axios";
 
 document.addEventListener('DOMContentLoaded', function () {
     let button = document.getElementById('search');
@@ -16,31 +17,28 @@ function generateContent(){
       }
     checkContentLength(destinationtext)
     if ( destinationtext !=''){
-        getLocation ('/getLocation', destinationtext, updateWeather);
+        getLocation ('/getLocation', destinationtext);
     }else {
-        return "Please enter your postcode!"
+        return "Please enter your accurate destination!"
     }
 }
 
-const getLocation = async (url, data, callback) => {
+const getLocation = async (url, data) => {
     let base = 'http://localhost:8080'
     console.log(data);
-    const response = await fetch(base + url, {
-        method:'get',
+    const response = await axios.post(base + url, {
+        // method:'post',
         credential: 'same-origin',
-        headers:{
-            'content-type': 'application/json',
-        },
+        // headers:{
+        //     'content-type': 'application/json',
+        // },
         body: JSON.stringify(data),
-    });
-    try {
-        const results = await response.json();
-        console.log(results);
-        callback(results);
-       
-    } catch(error) {
+    })
+    .then((response) => {
+        updateUI(response);
+    },(error) => {
         console.log('error', error);
-    }
+    });
 }
 
 // function updateDropDown (data) {
