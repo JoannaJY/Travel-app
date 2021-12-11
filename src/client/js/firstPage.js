@@ -17,35 +17,36 @@ function generateContent(){
       }
     checkContentLength(destinationtext)
     if ( destinationtext !=''){
-        getLocation ('/getLocation', destinationtext);
+        getLocation ('/getLocation', destinationtext, updateUI);
     }else {
         return "Please enter your accurate destination!"
     }
 }
 
-const getLocation = async (url, data) => {
+const getLocation = async (url, data, callback) => {
     let base = 'http://localhost:8080'
     console.log(data);
     const response = await axios.post(base + url, {
         // method:'post',
         credential: 'same-origin',
-        // headers:{
-        //     'content-type': 'application/json',
-        // },
+        headers:{
+            'content-type': 'application/json',
+        },
         body: JSON.stringify(data),
     })
     .then((response) => {
-        updateUI(response);
+        callback(response.data);
     },(error) => {
         console.log('error', error);
     });
 }
 
-// function updateDropDown (data) {
-//     document.getElementById('destination-1').innerHTML = `<p> ${data.agreement} </P>`;
-//     document.getElementById('destination-2').innerHTML = `<p> ${data.subjectivity} </p>`;
-//     document.getElementById('destination-3').innerHTML = `<p> ${data.confidence} </p>`;
-// }
+function updateUI (data) {
+
+    document.getElementById('temperature').innerHTML = `<p> Temperature: ${data.temperature} </P>`;
+    document.getElementById('wind').innerHTML = `<p> Wind: ${data.wind} </p>`;
+    document.getElementById('cloud').innerHTML = `<p> Cloud: ${data.cloud} </p>`;
+}
 
 
 export { generateContent }

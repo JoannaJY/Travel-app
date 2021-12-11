@@ -32,9 +32,9 @@ const getData = async(data) => {
     let geonameslng = res.data.geonames[0].lng;
     let geonameslat = res.data.geonames[0].lat;
 
-    console.log(geonameslng);
-    console.log(geonameslat)
-  getWeather(geonameslng, geonameslat)
+    let results = await getWeather(geonameslng, geonameslat);
+    console.log(results);
+    return results;
 }
 
 const getWeather = async(lng, lat) => {
@@ -46,27 +46,24 @@ const getWeather = async(lng, lat) => {
     let weatherbit_url = weatherbitUrl + weatherbitLocation + weatherbitAPI;
     console.log(weatherbit_url)
 
-    axios.post(weatherbit_url)
-    .then((response) => {
+    let response = await axios.post(weatherbit_url);
+    
         let weatherResults ={
            "temperature": response.data.data[0].temp,
            "wind": response.data.data[0].wind_spd,
            "cloud": response.data.data[0].clouds,
 
         }
-        console.log(weatherResults)
-        updateUIWeather(weatherResults)
-    }, (error) => {
-        console.log(error);
-    });
+        console.log(weatherResults);
+
+        return weatherResults;
 
 }
 app.post('/getLocation', function(req,res) {
     let location = req.body;
     getData(location)
-    .then(function updateUIWeather(data){
-        console.log(data)
-        res.send(data);
+    .then(updateUIWeather = async(data) => {
+        return res.send(data);
     }); 
 })
 
