@@ -82,6 +82,11 @@ body {
 .btn{
   color: black ! important;
 }
+.date{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 
 @media (max-width:1280px) {
 .float-md-start{
