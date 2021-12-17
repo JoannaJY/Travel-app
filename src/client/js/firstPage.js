@@ -37,6 +37,7 @@ const getLocation = async (url, data, callback) => {
     })
     .then((response) => {
         callback(response.data);
+        console.log(response.data);
     },(error) => {
         console.log('error', error);
     });
@@ -44,9 +45,10 @@ const getLocation = async (url, data, callback) => {
 
 function updateUI (data) {
 
-    document.getElementById('temperature').innerHTML = `<p> Temperature: ${data.temperature} </P>`;
-    document.getElementById('wind').innerHTML = `<p> Wind: ${data.wind} </p>`;
-    document.getElementById('cloud').innerHTML = `<p> Cloud: ${data.cloud} </p>`;
+    document.getElementById('temperature').innerHTML = `<p> Temperature: ${data[0].temperature} </P>`;
+    document.getElementById('wind').innerHTML = `<p> Wind: ${data[0].wind} </p>`;
+    document.getElementById('cloud').innerHTML = `<p> Cloud: ${data[0].cloud} </p>`;
+    document.getElementById('image').src = data[1];
 
 
     let countDown = setInterval(function() {

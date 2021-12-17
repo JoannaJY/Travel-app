@@ -38,8 +38,9 @@ const getData = async(data) => {
     console.log(geonamesName)
 
     let results = await getWeather(geonameslng, geonameslat);
+    let image = await getLocationImage(geonamesName);
     console.log(results);
-    return results;
+    return [results,image];
 }
 
 const getWeather = async(lng, lat) => {
@@ -62,6 +63,24 @@ const getWeather = async(lng, lat) => {
         console.log(weatherResults);
 
         return weatherResults;
+
+}
+
+
+const getLocationImage = async(locationName) => {
+
+    let pixabayUrl = "https://pixabay.com/api/?key=24411239-f0d3956c5c614d680d5d68bba";
+    let pixabayLocation = `&q=${locationName}&image_type=photo`;
+    
+    let pixabay_url = pixabayUrl + pixabayLocation;
+    console.log(pixabay_url)
+
+    let imageResponse = await axios.post(pixabay_url);
+    
+        let locationImage = imageResponse.data.hits[0].previewURL;
+        
+
+        return locationImage;
 
 }
 app.post('/getLocation', function(req,res) {
@@ -88,7 +107,7 @@ app.post('/getLocation', function(req,res) {
 
 
 
-// let PixabayUrl = "https://pixabay.com/api/?key=24411239-f0d3956c5c614d680d5d68bba&q=yellow+flowers&image_type=photo";
+
 
 
 
