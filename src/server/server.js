@@ -8,12 +8,11 @@ const axios = require('axios');
 const { get } = require('http');
 app.use(cors());
 const url = require('url');
-// const { response } = require('express');
 
 app.use(express.static('dist'));
 
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
+app.listen(5000, function () {
+    console.log('Example app listening on port 5000!')
 })
 
 
@@ -31,6 +30,12 @@ const getData = async(data) => {
 
     let geonameslng = res.data.geonames[0].lng;
     let geonameslat = res.data.geonames[0].lat;
+    let geonamesName = res.data.geonames[0].name;
+
+    console.log(geonameslng)
+    console.log(geonameslat)
+
+    console.log(geonamesName)
 
     let results = await getWeather(geonameslng, geonameslat);
     console.log(results);
@@ -60,7 +65,7 @@ const getWeather = async(lng, lat) => {
 
 }
 app.post('/getLocation', function(req,res) {
-    let location = req.body;
+    let location = req.body.body.location;
     getData(location)
     .then(updateUIWeather = async(data) => {
         return res.send(data);

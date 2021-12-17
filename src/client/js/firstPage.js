@@ -24,15 +24,16 @@ function generateContent(){
 }
 
 const getLocation = async (url, data, callback) => {
-    let base = 'http://localhost:8080'
+    let base = 'http://localhost:5000'
     console.log(data);
+    let d = {"location":data}
     const response = await axios.post(base + url, {
         // method:'post',
         credential: 'same-origin',
         headers:{
             'content-type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: d,
     })
     .then((response) => {
         callback(response.data);
@@ -67,7 +68,5 @@ function updateUI (data) {
 }
 
      
-
-
 
 export { generateContent }
