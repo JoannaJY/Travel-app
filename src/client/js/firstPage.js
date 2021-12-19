@@ -16,6 +16,11 @@ function generateContent(){
           }
       }
     checkContentLength(destinationtext)
+
+    let colour = "#ADC2A9";
+    document.getElementById('change-colour').style.backgroundColor = colour;
+
+
     if ( destinationtext !=''){
         getLocation ('/getLocation', destinationtext, updateUI);
     }else {
@@ -65,15 +70,20 @@ function updateUI (data) {
     
     let countDown = setInterval(function() {
         let departDate = new Date(document.getElementById('my-depart-date').value).getTime();
+        let returnDate = new Date(document.getElementById('my-return-date').value).getTime();
         let now = new Date().getTime();
 
-        let distance = departDate - now;
+        let distanceDepart = departDate - now;
+        let tripLast = returnDate - departDate;
 
-        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+        let days = Math.floor(distanceDepart / (1000 * 60 * 60 * 24));
+        let lastDays = Math.floor(tripLast / (1000 * 60 * 60 * 24));
 
          document.getElementById("countdown").innerHTML = "My trip is " + days + " days away ";
+         document.getElementById("triplast").innerHTML = "My trip lasts " + lastDays + " days " + ", Wish you a pleasant journey!";
       
-         if (distance < 0) {
+         if (distanceDepart < 0) {
            clearInterval(countDown);
          document.getElementById("countdown").innerHTML = "EXPIRED";
         }

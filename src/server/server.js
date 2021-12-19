@@ -55,9 +55,9 @@ const getWeather = async(lng, lat) => {
     let response = await axios.post(weatherbit_url);
     
         let weatherResults ={
-           "temperature": response.data.data[0].temp,
-           "wind": response.data.data[0].wind_spd,
-           "cloud": response.data.data[0].clouds,
+           "temperature": response.data.data[12].temp,
+           "wind": response.data.data[12].wind_spd,
+           "cloud": response.data.data[12].clouds,
 
         }
         console.log(weatherResults);
