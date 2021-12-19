@@ -8,6 +8,7 @@ const axios = require('axios');
 const { get } = require('http');
 app.use(cors());
 const url = require('url');
+const regenerator = require('regenerator-runtime');
 
 app.use(express.static('dist'));
 
