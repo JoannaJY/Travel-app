@@ -9,6 +9,7 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
+   
     mode: 'production',
     module: {
         rules: [
@@ -19,7 +20,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+                use: [ 'style-loader',  'css-loader', 'sass-loader' ]
             }
         ]
     },
@@ -28,6 +29,7 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
-        new WorkboxPlugin.GenerateSW()
+        new WorkboxPlugin.GenerateSW(),
+        
     ]
 }
