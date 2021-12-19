@@ -1,4 +1,6 @@
 import axios from "axios";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 document.addEventListener('DOMContentLoaded', function () {
     let button = document.getElementById('search');
