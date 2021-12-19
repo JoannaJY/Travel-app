@@ -90,17 +90,34 @@ body {
 .response{
   display:flex;
   flex-direction: column;
-  border: oldlace 5px;
+  background-color:#ADC2A9;
 
 }
 .plan{
   text-align: left ! important;
+  background-color: snow;
+  color: black;
 }
 .img{
   float: left;
 }
 .res{
   font-size: larger;
+}
+.appear-location{
+  font-size: 38px;
+  font-family: 'Satisfy', cursive;
+  color: black;
+}
+.appear-date{
+  font-size: 28px;
+  font-family: 'Satisfy', cursive;
+  color: black;
+}
+.weather{
+  font-size: 15px;
+  margin-top: 20px;
+  line-height: normal;
 }
 
 

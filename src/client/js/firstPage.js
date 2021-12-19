@@ -44,10 +44,11 @@ const getLocation = async (url, data, callback) => {
 }
 
 function updateUI (data) {
+    let destext = document.getElementById('destination').value;
 
-    document.getElementById('temperature').innerHTML = `<p> Temperature: ${data[0].temperature} </P>`;
-    document.getElementById('wind').innerHTML = `<p> Wind: ${data[0].wind} </p>`;
-    document.getElementById('cloud').innerHTML = `<p> Cloud: ${data[0].cloud} </p>`;
+    document.getElementById('temperature').innerHTML = `<p> ${destext} Temperature: ${data[0].temperature} </P>`;
+    document.getElementById('wind').innerHTML = `<p> ${destext} Wind: ${data[0].wind} </p>`;
+    document.getElementById('cloud').innerHTML = `<p> ${destext} Cloud: ${data[0].cloud} </p>`;
     document.getElementById('image').src = data[1];
     document.getElementById('plan').innerHTML = `<h3> Travel Planner </h3>`;
 
@@ -55,7 +56,6 @@ function updateUI (data) {
     let appearDate = document.createElement('div');
     appearLocation.className = "appear-location";
     appearDate.className = "appear-date";
-    let destext = document.getElementById('destination').value;
     let departing = document.getElementById('my-depart-date').value;
     appearLocation.innerHTML = `<p> My trip to: ${destext}`;
     appearDate.innerHTML = `<p> Departing: ${departing}`; 
