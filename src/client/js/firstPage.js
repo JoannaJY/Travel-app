@@ -49,8 +49,20 @@ function updateUI (data) {
     document.getElementById('wind').innerHTML = `<p> Wind: ${data[0].wind} </p>`;
     document.getElementById('cloud').innerHTML = `<p> Cloud: ${data[0].cloud} </p>`;
     document.getElementById('image').src = data[1];
+    document.getElementById('plan').innerHTML = `<h3> Travel Planner </h3>`;
 
-
+    let appearLocation = document.createElement('div');
+    let appearDate = document.createElement('div');
+    appearLocation.className = "appear-location";
+    appearDate.className = "appear-date";
+    let destext = document.getElementById('destination').value;
+    let departing = document.getElementById('my-depart-date').value;
+    appearLocation.innerHTML = `<p> My trip to: ${destext}`;
+    appearDate.innerHTML = `<p> Departing: ${departing}`; 
+    const updateText = document.getElementById('res');
+    updateText.appendChild(appearLocation);
+    updateText.appendChild(appearDate);
+    
     let countDown = setInterval(function() {
         let departDate = new Date(document.getElementById('my-depart-date').value).getTime();
         let now = new Date().getTime();

@@ -77,7 +77,7 @@ body {
     margin-top: 340px;
 }
 .px-3{
-    margin-top: 300px;
+    margin-top: 100px;
 }
 .btn{
   color: black ! important;
@@ -87,6 +87,27 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
 }
+.response{
+  display:flex;
+  flex-direction: column;
+  border: oldlace 5px;
+
+}
+.plan{
+  text-align: left ! important;
+}
+.img{
+  float: left;
+}
+.res{
+  font-size: larger;
+}
+
+
+
+
+
+
 
 @media (max-width:1280px) {
 .float-md-start{
@@ -96,9 +117,6 @@ body {
     margin-left: 50px;
 }
 
- .px-3{
-    margin-top: 100px;
-}
 .footer{
     margin-top: 240px;
 }

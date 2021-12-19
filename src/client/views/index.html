@@ -28,7 +28,7 @@
                 <textarea class= "myInput" id="mytext" placeholder="From here" rows="2" cols="40"></textarea>
                 <textarea class= "myInput" id="destination" placeholder="Enter your destination here" rows="2" cols="40"></textarea>
              </div>
-        </section>
+         </section>
 
         <section class="date">
             <p>My Depart Date</p>
@@ -36,17 +36,23 @@
             <p>My Return Date</p>
             <input class= "mydate" id="my-return-date" placeholder="Return date" type="date"></input>
         </section>
+
          <p class="lead">Search for the flights to any airport anywhere in the world.</p>
          <p class="lead">
            <a href="#" id="search" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Search</a>
          </p>
-         <section>
-          <img id="image" >
-          <div id="countdown" ></div>
-          <div id="temperature" ></div>
-          <div id="wind" ></div>
-          <div id="cloud" ></div>
-      </section>
+
+         <div class="response">
+          <div id="plan" class="plan"></div>
+          <div class="res">
+             <img id="image" class="img" width=280px heigh=280px>
+             <div id="res"></div>
+             <div id="countdown" class="countdown"></div>
+             <div id="temperature" class="tem"></div>
+             <div id="wind" class="wind"></div>
+             <div id="cloud" class="cloud"></div>
+          </div>
+         </div>
       </main>
 
       <footer class="footer text-white-50">
