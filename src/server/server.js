@@ -12,8 +12,8 @@ const regenerator = require('regenerator-runtime');
 
 app.use(express.static('dist'));
 
-app.listen(5000, function () {
-    console.log('Example app listening on port 5000!')
+app.listen(8081, function () {
+    console.log('Example app listening on port 8081!')
 })
 
 

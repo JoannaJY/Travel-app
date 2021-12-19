@@ -31,7 +31,7 @@ function generateContent(){
 }
 
 const getLocation = async (url, data, callback) => {
-    let base = 'http://localhost:5000'
+    let base = 'http://localhost:8081'
     console.log(data);
     let d = {"location":data}
     const response = await axios.post(base + url, {
