@@ -2,10 +2,10 @@
 #### This is a app to combin all of my front end skills into an amazing capstone project.
 
 ## How to run:
- npm install
- npm install regenerator-runtime
- npm install core-js
- npm install axios
+ - npm install
+ - npm install regenerator-runtime
+ - npm install core-js
+ - npm install axios
 
  optional:
  npm install identity-obj-proxy --save-dev
