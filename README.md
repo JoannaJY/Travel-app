@@ -9,6 +9,15 @@
 
  optional:
  npm install identity-obj-proxy --save-dev
+
+ ## Please note
+ in package.json
+
+  "scripts": {
+    "test": "jest --env=jsdom",
+  }
+
+All jest test should under jsdom envirnment
  
 
 ## In this project I do:
