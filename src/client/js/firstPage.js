@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function generateContent(){
     console.log('clicked');
     let destinationtext = document.getElementById('destination').value;
-
+// Check destination entre vaild or not
     function checkContentLength(inputText) {
           if(destinationtext.length <=3 ) {
               alert("Please enter a vaild postcode.")
@@ -29,13 +29,12 @@ function generateContent(){
         return "Please enter your accurate destination!"
     }
 }
-
+// post destination data to server side
 const getLocation = async (url, data, callback) => {
     let base = 'http://localhost:8081'
     console.log(data);
     let d = {"location":data}
     const response = await axios.post(base + url, {
-        // method:'post',
         credential: 'same-origin',
         headers:{
             'content-type': 'application/json',
@@ -52,13 +51,13 @@ const getLocation = async (url, data, callback) => {
 
 function updateUI (data) {
     let destext = document.getElementById('destination').value;
-
+// Update UI weather data and image
     document.getElementById('temperature').innerHTML = `<p> ${destext} Temperature: ${data[0].temperature} </P>`;
     document.getElementById('wind').innerHTML = `<p> ${destext} Wind: ${data[0].wind} </p>`;
     document.getElementById('cloud').innerHTML = `<p> ${destext} Cloud: ${data[0].cloud} </p>`;
     document.getElementById('image').src = data[1];
     document.getElementById('plan').innerHTML = `<h3> Travel Planner </h3>`;
-
+// Dynamic changes to front end 
     let appearLocation = document.createElement('div');
     let appearDate = document.createElement('div');
     appearLocation.className = "appear-location";
@@ -69,7 +68,7 @@ function updateUI (data) {
     const updateText = document.getElementById('res');
     updateText.appendChild(appearLocation);
     updateText.appendChild(appearDate);
-    
+    // Show trip length and how many days away
     let countDown = setInterval(function() {
         let departDate = new Date(document.getElementById('my-depart-date').value).getTime();
         let returnDate = new Date(document.getElementById('my-return-date').value).getTime();

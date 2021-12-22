@@ -16,7 +16,7 @@ app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
 
-
+// Get Geonames lng, lat and name for Weatherbit
 const getData = async(data) => {
     let geoLocation = {
         q: data,
@@ -43,7 +43,7 @@ const getData = async(data) => {
     console.log(results);
     return [results,image];
 }
-
+// Get Weatherbit destination weather data and return
 const getWeather = async(lng, lat) => {
 
     let weatherbitUrl = "https://api.weatherbit.io/v2.0/forecast/daily?";    
@@ -67,7 +67,7 @@ const getWeather = async(lng, lat) => {
 
 }
 
-
+// Get Pixabay destination image and return 
 const getLocationImage = async(locationName) => {
 
     let pixabayUrl = "https://pixabay.com/api/?key=24411239-f0d3956c5c614d680d5d68bba";
