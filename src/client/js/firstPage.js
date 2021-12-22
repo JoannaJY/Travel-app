@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function generateContent(){
     console.log('clicked');
     let destinationtext = document.getElementById('destination').value;
-// Check destination entre vaild or not
+// Check destination enter vaild or not
     function checkContentLength(inputText) {
           if(destinationtext.length <=3 ) {
               alert("Please enter a vaild postcode.")
