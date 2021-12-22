@@ -12,12 +12,7 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ]
-  },
+
   "dependencies": {
     "axios": "^0.24.0",
     "body-parser": "^1.19.0",

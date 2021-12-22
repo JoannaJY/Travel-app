@@ -7,15 +7,16 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', generateContent);
 });
 
+function checkContentLength(inputText) {
+    if(destinationtext.length <=3 ) {
+        alert("Please enter a vaild postcode.")
+    }
+}
 
 function generateContent(){
     let destinationtext = document.getElementById('destination').value;
 // Check destination enter vaild or not
-    function checkContentLength(inputText) {
-          if(destinationtext.length <=3 ) {
-              alert("Please enter a vaild postcode.")
-          }
-      }
+
     checkContentLength(destinationtext)
 
     let colour = "#ADC2A9";
