@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function generateContent(){
-    console.log('clicked');
     let destinationtext = document.getElementById('destination').value;
 // Check destination enter vaild or not
     function checkContentLength(inputText) {
@@ -43,7 +42,7 @@ const getLocation = async (url, data, callback) => {
     })
     .then((response) => {
         callback(response.data);
-        console.log(response.data);
+        
     },(error) => {
         console.log('error', error);
     });
@@ -57,6 +56,7 @@ function updateUI (data) {
     document.getElementById('cloud').innerHTML = `<p> ${destext} Cloud: ${data[0].cloud} </p>`;
     document.getElementById('image').src = data[1];
     document.getElementById('plan').innerHTML = `<h3> Travel Planner </h3>`;
+
 // Dynamic changes to front end 
     let appearLocation = document.createElement('div');
     let appearDate = document.createElement('div');
@@ -68,6 +68,7 @@ function updateUI (data) {
     const updateText = document.getElementById('res');
     updateText.appendChild(appearLocation);
     updateText.appendChild(appearDate);
+
     // Show trip length and how many days away
     let countDown = setInterval(function() {
         let departDate = new Date(document.getElementById('my-depart-date').value).getTime();

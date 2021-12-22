@@ -6,10 +6,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './src/client/index.js',
-    output: {
-        libraryTarget: 'var',
-        library: 'Client'
-    },
+    // output: {
+    //     libraryTarget: 'var',
+    //     library: 'Client'
+    // },
    
     mode: 'production',
     module: {
